@@ -6,13 +6,14 @@ public class Calculator {
     public static double montoEnCaja = 0;
     public static double cantidadTotalCompras = 0;
     public static double cantidadTotalVentas = 0;
-
+    public static int contadorDeOperaciones = 0;
     
     public static void comprarCajas(int cantidadCompras, double costo) {
         double monto = cantidadCompras * costo;
         totalCompras += monto;
         montoEnCaja -= monto;
         cantidadTotalCompras += cantidadCompras;
+        contadorDeOperaciones++;
 
         System.out.println("La compra realizada por " + cantidadCompras + " cajas al costo " + costo + " es igual a " + monto);
     }
@@ -22,6 +23,7 @@ public class Calculator {
         totalVentas += monto;
         montoEnCaja += monto;
         cantidadTotalVentas += cantidadVentas;
+        contadorDeOperaciones++;
 
         System.out.println("La venta realizada por " + cantidadVentas + " cajas al precio de " + precio + " es igual a " + monto);
     }
