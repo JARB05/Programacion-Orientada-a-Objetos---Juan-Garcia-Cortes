@@ -26,7 +26,7 @@ public class CLI {
     /**
      * Inicia la interfaz de línea de comandos para el programa de control de cajas de papel.
      */
-    public static void LaunchCalculator() {
+    public static void launchApp() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(generarLineas('=',40));

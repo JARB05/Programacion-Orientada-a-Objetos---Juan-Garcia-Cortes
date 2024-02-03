@@ -8,14 +8,10 @@ import edu.juan.garcia.reto2.cajas.ui.CLI;
 public class Main {
     public static void main(String[] args) {
         try {
-            /*
-            Lanza la interfaz de línea de comandos para el programa de control de cajas de papel.
-             */
-            CLI.LaunchCalculator();
+            //Lanza la interfaz de línea de comandos para el programa de control de cajas de papel.
+            CLI.launchApp();
         } catch (Exception e) {
-            /*
-            Maneja cualquier error inesperado durante la ejecución.
-             */
+            //Maneja cualquier error inesperado durante la ejecución.
             System.out.println("Error inesperado " + e);
         }
     }
