@@ -40,6 +40,10 @@ public class Cli {
                     Dictionary.listarPalabras();
                     break;
                 case 'B':
+                    System.out.println("Ingrese la palabra que a buscar: ");
+                    String palabra = scanner.nextLine();
+                    String significado = Dictionary.buscarPalabra(palabra);
+                    System.out.println(significado);
                     break;
                 case 'C':
                     break;
