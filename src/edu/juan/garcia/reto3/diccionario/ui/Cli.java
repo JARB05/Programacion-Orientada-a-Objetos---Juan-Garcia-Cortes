@@ -1,4 +1,6 @@
 package edu.juan.garcia.reto3.diccionario.ui;
+import edu.juan.garcia.reto3.diccionario.process.Dictionary;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -33,7 +35,9 @@ public class Cli {
             scanner.nextLine();
 
             switch (opcion){
+
                 case 'A':
+                    Dictionary.listarPalabras();
                     break;
                 case 'B':
                     break;
