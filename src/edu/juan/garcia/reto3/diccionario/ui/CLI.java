@@ -4,19 +4,16 @@ import edu.juan.garcia.reto3.diccionario.process.Dictionary;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Cli {
+public class CLI {
+
     public static String generarLineas(char caracter, int longitud){
         char[] lineaChars = new char[longitud];
         Arrays.fill(lineaChars,caracter);
         return new String(lineaChars);
     }
 
-    public static void launchApp(){
+    public static void launchApp(Dictionary dictionary){
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println(generarLineas('=',40));
-        System.out.println("          Bienvenido al Sistema          ");
-        System.out.println(generarLineas('=',40));
 
         char opcion;
 
@@ -37,17 +34,23 @@ public class Cli {
             switch (opcion){
 
                 case 'A':
-                    Dictionary.listarPalabras();
+                    dictionary.enlistarPalabras();
                     break;
                 case 'B':
-                    System.out.println("Ingrese la palabra que a buscar: ");
-                    String palabra = scanner.nextLine();
-                    String significado = Dictionary.buscarPalabra(palabra);
-                    System.out.println(significado);
+                    System.out.println("Ingrese la palabra que desea buscar:");
+                    String palabraBuscada = scanner.nextLine();
+                    String significado = dictionary.buscarPalabra(palabraBuscada);
+                    if (!significado.isEmpty()) {
+                        System.out.println("El significado de '" + palabraBuscada + "' es: " + significado);
+                    } else {
+                        System.out.println("La palabra '" + palabraBuscada + "' no se encuentra en el diccionario.");
+                    }
                     break;
                 case 'C':
+                    System.out.println(dictionary.getDetallesDelDiccionario());
                     break;
                 case 'S':
+                    System.out.println("Bye");
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
