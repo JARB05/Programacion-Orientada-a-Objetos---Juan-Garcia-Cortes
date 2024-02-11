@@ -5,13 +5,31 @@ import edu.juan.garcia.reto3.numeros.process.Calculator;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Clase que proporciona una interfaz de línea de comandos para interactuar con la aplicación.
+ */
 public class CLI {
+
+    /**
+     * Genera una línea con un carácter específico y longitud dada.
+     *
+     * @param caracter Carácter para generar la línea.
+     * @param longitud Longitud de la línea.
+     * @return La línea generada como una cadena de caracteres.
+     */
     public static String generarLineas(char caracter, int longitud) {
         char[] lineaChars = new char[longitud];
         Arrays.fill(lineaChars, caracter);
         return new String(lineaChars);
     }
 
+    /**
+     * Método principal que inicia la interfaz de línea de comandos.
+     * Permite al usuario ingresar la cantidad de filas y columnas para generar la matriz.
+     * Llama a los métodos de la clase Calculator para generar la matriz,
+     * contar pares e impares por filas y columnas, y obtener la suma total.
+     * Muestra la matriz generada, el conteo de pares e impares por filas y columnas, y la suma total en la consola.
+     */
     public static void launchApp() {
         Scanner scanner = new Scanner(System.in);
         int filas, columnas;
