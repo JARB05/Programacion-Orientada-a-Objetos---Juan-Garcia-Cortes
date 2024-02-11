@@ -21,12 +21,13 @@ public class CLI {
             System.out.println(generarLineas('=',40));
             System.out.println("          Menú Principal          ");
             System.out.println(generarLineas('=',40));
-            System.out.println("A. Enlistar palabras del diccionario");
+            System.out.println("\nA. Enlistar palabras del diccionario");
             System.out.println("B. Buscar palabra en el diccionario");
             System.out.println("C. Detalle del diccionario");
             System.out.println("S. Salir del programa");
+            System.out.println("\u200E"); //Esto es un caracter en blanco y lo estoy utilizando como salto de linea.
             System.out.println(generarLineas('=',40));
-            System.out.println("Seleccione una opción ingresando la letra correspondiente:");
+            System.out.println("\nSeleccione una opción ingresando la letra correspondiente:");
 
             opcion = scanner.next().charAt(0);
             scanner.nextLine();
@@ -34,9 +35,11 @@ public class CLI {
             switch (opcion){
 
                 case 'A':
+                    System.out.println(generarLineas('=',40));
                     dictionary.enlistarPalabras();
                     break;
                 case 'B':
+                    System.out.println(generarLineas('=',40));
                     System.out.println("Ingrese la palabra que desea buscar:");
                     String palabraBuscada = scanner.nextLine();
                     String significado = dictionary.buscarPalabra(palabraBuscada);
@@ -47,10 +50,11 @@ public class CLI {
                     }
                     break;
                 case 'C':
+                    System.out.println(generarLineas('=',40));
                     System.out.println(dictionary.getDetallesDelDiccionario());
                     break;
                 case 'S':
-                    System.out.println("Bye");
+                    System.out.println("¡Hasta luego!");
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
