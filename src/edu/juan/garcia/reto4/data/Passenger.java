@@ -4,7 +4,7 @@ public class Passenger {
 
     private String nombreCompleto;
 
-    public Passenger(String fullName){
+    public Passenger(String nombreCompleto){
         this.nombreCompleto = nombreCompleto;
     }
 

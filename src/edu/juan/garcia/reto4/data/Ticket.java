@@ -3,13 +3,13 @@ package edu.juan.garcia.reto4.data;
 import java.util.ArrayList;
 
 public class Ticket {
-    private String nombreComprador;
-    private int cantidadDeTickets;
+    private final String nombreComprador;
+    private int cantidadBoletos;
     private ArrayList<Passenger> passengers;
 
     public Ticket(String nombreComprador, int cantidadDeTickets){
         this.nombreComprador = nombreComprador;
-        this.cantidadDeTickets = cantidadDeTickets;
+        this.cantidadBoletos = cantidadDeTickets;
         this.passengers = new ArrayList<>();
     }
 
@@ -17,8 +17,8 @@ public class Ticket {
         return nombreComprador;
     }
 
-    public int getCantidadDeTickets(){
-        return cantidadDeTickets;
+    public int getCantidadBoletos(){
+        return cantidadBoletos;
     }
 
     public void agregarPasajero(Passenger passenger){
