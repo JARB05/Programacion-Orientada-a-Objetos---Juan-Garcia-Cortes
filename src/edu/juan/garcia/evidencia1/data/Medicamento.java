@@ -17,51 +17,15 @@ public class Medicamento {
         this.formaFarmaceutica = formaFarmaceutica;
     }
 
-    public String getNombreQuimico() {
-        return nombreQuimico;
-    }
-
-    public void setNombreQuimico(String nombreQuimico) {
-        this.nombreQuimico = nombreQuimico;
-    }
-
-    public String getNombreGenerico() {
-        return nombreGenerico;
-    }
-
-    public void setNombreGenerico(String nombreGenerico) {
-        this.nombreGenerico = nombreGenerico;
-    }
-
-    public String getNombreRegistrado() {
-        return nombreRegistrado;
-    }
-
-    public void setNombreRegistrado(String nombreRegistrado) {
-        this.nombreRegistrado = nombreRegistrado;
-    }
-
-    public double getPrecioPublico() {
-        return precioPublico;
-    }
-
-    public void setPrecioPublico(double precioPublico) {
-        this.precioPublico = precioPublico;
-    }
-
-    public double getPrecioVenta() {
-        return precioVenta;
-    }
-
-    public void setPrecioVenta(double precioVenta) {
-        this.precioVenta = precioVenta;
-    }
-
-    public String getFormaFarmaceutica() {
-        return formaFarmaceutica;
-    }
-
-    public void setFormaFarmaceutica(String formaFarmaceutica) {
-        this.formaFarmaceutica = formaFarmaceutica;
+    //Esto lo puedes cambiar por si no te gusta como se muestra el desglose de medicamentos.
+    @Override
+    public String toString() {
+        return "Nombre químico: " + nombreQuimico +
+                ", Nombre genérico: " + nombreGenerico +
+                ", Nombre registrado: " + nombreRegistrado +
+                ", Precio al público: " + precioPublico +
+                ", Precio de venta: " + precioVenta +
+                ", Forma farmacéutica: " + formaFarmaceutica;
     }
 }
+
