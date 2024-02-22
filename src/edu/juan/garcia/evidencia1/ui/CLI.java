@@ -46,7 +46,11 @@ public class CLI {
             String formaFarmaceutica = scanner.nextLine().toLowerCase();
 
             // Crear instancia de Medicamento y agregar a la lista
+<<<<<<< HEAD
             registro.agregarMedicamento(listaMedicamentos, nombreQuimico, nombreGenerico, nombreRegistrado, precioPublico, formaFarmaceutica);
+=======
+            registro.agregarMedicamento(listaMedicamentos, usuario, nombreQuimico, nombreGenerico, nombreRegistrado, precioPublico, formaFarmaceutica);
+>>>>>>> origin/Evidencia-1
         }
 
         // Generar reporte

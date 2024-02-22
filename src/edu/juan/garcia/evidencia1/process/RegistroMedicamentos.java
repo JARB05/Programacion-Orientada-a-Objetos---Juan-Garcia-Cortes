@@ -7,7 +7,7 @@ import java.util.Date;
 public class RegistroMedicamentos {
 
 
-    public void agregarMedicamento(ArrayList<Medicamento> listaMedicamentos, String nombreQuimico, String nombreGenerico, String nombreRegistrado, double precioPublico, String formaFarmaceutica) {
+    public void agregarMedicamento(ArrayList<Medicamento> listaMedicamentos, String usuario, String nombreQuimico, String nombreGenerico, String nombreRegistrado, double precioPublico, String formaFarmaceutica) {
         double precioVenta = precioPublico;
         switch (formaFarmaceutica){
             case "solido":
