@@ -1,5 +1,8 @@
 package edu.juan.garcia.evidencia1.data;
 
+/**
+ * La clase Medicamento representa un medicamento con sus atributos.
+ */
 public class Medicamento {
     private String nombreQuimico;
     private String nombreGenerico;
@@ -8,7 +11,17 @@ public class Medicamento {
     private double precioVenta;
     private String formaFarmaceutica;
 
-    public Medicamento(String nombreQuimico, String nombreGenerico, String nombreRegistrado, double precioPublico, double precioVenta, String formaFarmaceutica) {
+    /**
+     * Constructor para crear un nuevo objeto Medicamento.
+     * @param nombreQuimico El nombre químico del medicamento.
+     * @param nombreGenerico El nombre genérico del medicamento.
+     * @param nombreRegistrado El nombre registrado del medicamento.
+     * @param precioPublico El precio público del medicamento.
+     * @param precioVenta El precio de venta del medicamento.
+     * @param formaFarmaceutica La forma farmacéutica del medicamento.
+     */
+    public Medicamento(String nombreQuimico, String nombreGenerico, String nombreRegistrado,
+                       double precioPublico, double precioVenta, String formaFarmaceutica) {
         this.nombreQuimico = nombreQuimico;
         this.nombreGenerico = nombreGenerico;
         this.nombreRegistrado = nombreRegistrado;
@@ -17,7 +30,10 @@ public class Medicamento {
         this.formaFarmaceutica = formaFarmaceutica;
     }
 
-    //Esto lo puedes cambiar por si no te gusta como se muestra el desglose de medicamentos.
+    /**
+     * Devuelve una representación en cadena que incluye los atributos del medicamento
+     * @return Una cadena que representa el objeto Medicamento.
+     */
     @Override
     public String toString() {
         return "Nombre químico: " + nombreQuimico +

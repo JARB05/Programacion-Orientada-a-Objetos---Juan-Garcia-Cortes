@@ -5,7 +5,15 @@ import edu.juan.garcia.evidencia1.data.Medicamento;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase que proporciona una interfaz de línea de comandos para interactuar con el programa.
+ */
 public class CLI {
+
+    /**
+     * Inicia la aplicación de registro de medicamentos.
+     * @param listaMedicamentos La lista de medicamentos que se utilizará en la aplicación.
+     */
     public static void launchApp(ArrayList<Medicamento> listaMedicamentos) {
         Scanner scanner = new Scanner(System.in);
         RegistroMedicamentos registro = new RegistroMedicamentos();
@@ -32,6 +40,7 @@ public class CLI {
             if (nombreQuimico.equalsIgnoreCase("salir")) {
                 break;
             }
+
             System.out.print("Nombre genérico: ");
             String nombreGenerico = scanner.nextLine();
             System.out.print("Nombre registrado: ");
@@ -40,17 +49,17 @@ public class CLI {
             double precioPublico = scanner.nextDouble();
             scanner.nextLine(); // Limpiar el buffer del scanner
 
-            // Mostrar opciones de forma farmacéutica (lee el commit y cambialo)
-            System.out.println("Opciones de forma farmacéutica: sólido, semisólido, líquido");
-            System.out.print("Forma farmacéutica (ingrese la palabra sin acentos): ");
+            // Mostrar opciones de forma farmacéutica
+            System.out.println("Opciones de forma farmacéutica:");
+            System.out.println("solido: pastillas,polvos (que pueden estar encapsulados), Papeles, Oleosacaruros, Granulados, Cápsulas (duras, elásticas o perlas)");
+            System.out.println("semisolido: pomadas,pastas,cremas,jaleas,emplastados.");
+            System.out.println("liquido: soluciones,jarabes,suspensiones.");
+            System.out.print("\nForma farmacéutica (ingrese la palabra sin acentos): ");
             String formaFarmaceutica = scanner.nextLine().toLowerCase();
 
             // Crear instancia de Medicamento y agregar a la lista
-<<<<<<< HEAD
-            registro.agregarMedicamento(listaMedicamentos, nombreQuimico, nombreGenerico, nombreRegistrado, precioPublico, formaFarmaceutica);
-=======
-            registro.agregarMedicamento(listaMedicamentos, usuario, nombreQuimico, nombreGenerico, nombreRegistrado, precioPublico, formaFarmaceutica);
->>>>>>> origin/Evidencia-1
+            registro.agregarMedicamento(listaMedicamentos, nombreQuimico, nombreGenerico,
+                    nombreRegistrado, precioPublico, formaFarmaceutica);
         }
 
         // Generar reporte
