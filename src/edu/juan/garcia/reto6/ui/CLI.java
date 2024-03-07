@@ -11,15 +11,26 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase que representa la interfaz de usuario en línea de comandos.
+ * Permite capturar datos de empleados y generar un reporte de nómina.
+ */
 public class CLI {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Método principal que inicia la aplicación.
+     */
     public static void launchApp(){
         List<Empleado> empleados = capturarEmpleados();
         generarReporteNomina(empleados);
     }
 
+    /**
+     * Captura los datos de los empleados ingresados por el usuario.
+     * @return Lista de empleados registrados.
+     */
     private static List<Empleado> capturarEmpleados(){
         List<Empleado> empleados = new ArrayList<>();
 
@@ -30,7 +41,7 @@ public class CLI {
             System.out.println("Empleado #" + (i + 1));
             scanner.nextLine();
             System.out.println("Nombre completo: ");
-            String nomreCompleto = scanner.nextLine();
+            String nombreCompleto = scanner.nextLine();
 
             System.out.println("Horas trabajadas: ");
             int horasTrabajadas = scanner.nextInt();
@@ -42,10 +53,10 @@ public class CLI {
             String telefono = scanner.next();
 
             System.out.println("Fecha de nacimiento (D/M/A): ");
-            String fechaNacimientos= scanner.next();
+            String fechaNacimientoString = scanner.next();
             Date fechaNacimiento = null;
             try{
-                fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimientos);
+                fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimientoString);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -70,10 +81,15 @@ public class CLI {
                     break;
             }
             scanner.nextLine();
-            empleados.add(new Empleado(nomreCompleto, horasTrabajadas, horasExtras, telefono, fechaNacimiento, categoria));
+            empleados.add(new Empleado(nombreCompleto, horasTrabajadas, horasExtras, telefono, fechaNacimiento, categoria));
         }
         return empleados;
     }
+
+    /**
+     * Genera un reporte de nómina con los datos de los empleados.
+     * @param empleados Lista de empleados registrados.
+     */
     private static void generarReporteNomina(List<Empleado> empleados){
         System.out.println("\n--- Reporte de Nómina ---");
         System.out.println("Total de la nómina de la empresa: $" + CalculadoraNomina.calcularTotalNomina(empleados));
@@ -85,4 +101,3 @@ public class CLI {
         System.out.println("Total de horas extras laboradas en la empresa: " + CalculadoraNomina.calcularTotalHorasExtraLaboradas(empleados));
     }
 }
-
