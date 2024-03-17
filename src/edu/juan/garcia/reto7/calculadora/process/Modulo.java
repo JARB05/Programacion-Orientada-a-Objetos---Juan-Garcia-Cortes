@@ -1,6 +1,20 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
+/**
+ * Clase que representa la operación de módulo.
+ * Extiende de la clase Resta.
+ */
 public class Modulo extends Resta {
+
+    /**
+     * Calcula el módulo de una división entre dos números.
+     *
+     * @param x el dividendo
+     * @param y el divisor
+     * @return el residuo de la división (módulo)
+     * @throws ArithmeticException si se intenta realizar una operación de módulo por cero
+     */
+
     @Override
     public double calcular(double x, double y) {
         if (y == 0) throw new ArithmeticException("Operación módulo por cero no permitida.");

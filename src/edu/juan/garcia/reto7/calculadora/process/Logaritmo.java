@@ -1,6 +1,19 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
+/**
+ * Clase que representa la operación de logaritmo.
+ * Extiende de la clase Operacion.
+ */
 public class Logaritmo extends Operacion {
+
+    /**
+     * Calcula el logaritmo de un valor en una base dada.
+     *
+     * @param base  la base del logaritmo
+     * @param valor el valor del logaritmo
+     * @return el resultado del logaritmo
+     * @throws ArithmeticException si la base es menor o igual a 1, o si el valor es menor o igual a 0
+     */
 
     @Override
     public double calcular(double base, double valor) {

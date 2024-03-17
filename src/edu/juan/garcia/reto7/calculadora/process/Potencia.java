@@ -1,6 +1,20 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
+/**
+ * Clase que representa la operación de potenciación.
+ * Extiende de la clase Multiplicacion.
+ */
+
 public class Potencia extends Multiplicacion {
+
+    /**
+     * Calcula la potencia de un número elevado a otro.
+     *
+     * @param base      la base de la potencia
+     * @param exponente el exponente de la potencia
+     * @return el resultado de la potenciación
+     */
+
     @Override
     public double calcular(double base, double exponente) {
         Division division = new Division();// Instancia de Division para usar en caso de exponentes negativos.

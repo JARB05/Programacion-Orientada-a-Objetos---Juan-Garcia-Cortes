@@ -3,6 +3,11 @@ import edu.juan.garcia.reto7.calculadora.process.*;
 
 import java.util.Scanner;
 
+/**
+ * Esta clase representa la interfaz de usuario de la calculadora en línea de comandos.
+ * Permite al usuario realizar diversas operaciones aritméticas.
+ */
+
 public class CLI {
 
     /*Este metodo sirve para mostar el menu al usuario y que pueda elegir la opcion que
@@ -16,6 +21,10 @@ public class CLI {
      f. Potencia
      g. Raiz
      h. Logaritmo*/
+
+    /**
+     * Muestra el menú de operaciones disponibles al usuario.
+     */
     public static void showMenu() {
         System.out.println("------------------Calculadora------------------");
         System.out.println("Elija la operacion que desea realizar:");
@@ -134,7 +143,5 @@ public class CLI {
             default:
                 throw new IllegalStateException("\nDato no valido: "+operacion+"\nReinicie");
         }
-
-
     }
 }

@@ -1,7 +1,22 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
+/**
+ * Clase que representa la operación de raíz cuadrada.
+ * Extiende de la clase Operacion.
+ */
+
 public class Raiz extends Operacion {
+
     private static final double ERROR_TOLERADO = 0.0001;
+
+    /**
+     * Calcula la raíz cuadrada de un número.
+     *
+     * @param x el número del cual se desea calcular la raíz cuadrada
+     * @param y no se usa, está aquí para cumplir con la firma
+     * @return la raíz cuadrada del número dado
+     * @throws IllegalArgumentException si se intenta calcular la raíz cuadrada de un número negativo
+     */
 
     @Override
     public double calcular(double x, double y) { // 'y' no se usa, está aquí para cumplir con la firma.

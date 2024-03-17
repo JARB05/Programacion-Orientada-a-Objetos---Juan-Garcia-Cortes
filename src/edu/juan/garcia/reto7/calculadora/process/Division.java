@@ -1,6 +1,20 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
+/**
+ * Clase que representa una operación de división.
+ * Extiende de la clase Resta.
+ */
 public class Division extends Resta {
+
+    /**
+     * Calcula el cociente de una división entre dos números.
+     *
+     * @param x el dividendo
+     * @param y el divisor
+     * @return el cociente de la división
+     * @throws ArithmeticException si se intenta dividir por cero
+     */
+
     @Override
     public double calcular(double x, double y) {
         if (y == 0) throw new ArithmeticException("División por cero.");

@@ -1,6 +1,20 @@
 package edu.juan.garcia.reto7.calculadora.process;
 
-public class Multiplicacion extends Suma{
+/**
+ * Clase que representa la operación de multiplicación.
+ * Extiende de la clase Suma.
+ */
+
+public class Multiplicacion extends Suma {
+
+    /**
+     * Calcula el producto de dos números.
+     *
+     * @param x el primer factor
+     * @param y el segundo factor
+     * @return el resultado de la multiplicación
+     */
+
     @Override
     public double calcular(double x, double y) {
         double resultado = 0;
