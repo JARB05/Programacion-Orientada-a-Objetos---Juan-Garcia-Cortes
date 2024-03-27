@@ -1,6 +1,14 @@
 package edu.juan.garcia.reto7.calculadora.ui;
 
+/**
+ * Esta clase define los textos en inglés utilizados en la interfaz de usuario de la calculadora.
+ * Extiende la clase Textos y proporciona las cadenas de texto para la interfaz de usuario en inglés.
+ */
 public class Eng extends Textos{
+
+    /**
+     * Constructor que inicializa todas las cadenas de texto en inglés.
+     */
     public Eng(){
         CALCULADORA = "Calculator";
         ELECCION = "Choose the operation you want to perform:";

@@ -1,5 +1,9 @@
 package edu.juan.garcia.reto7.calculadora.ui;
 
+/**
+ * Esta clase abstracta define los textos utilizados en la interfaz de usuario de la calculadora.
+ * Contiene cadenas de texto para las operaciones, mensajes de solicitud de entrada y mensajes de resultado en diferentes idiomas.
+ */
 public abstract class Textos {
 
     public static String CALCULADORA;

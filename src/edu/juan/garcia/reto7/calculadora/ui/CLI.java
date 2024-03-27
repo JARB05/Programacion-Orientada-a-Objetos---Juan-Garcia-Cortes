@@ -9,12 +9,20 @@ import java.util.Scanner;
 
 public class CLI {
 
+    /**
+     * Muestra el menú de selección de idioma para la calculadora.
+     */
     public static void showLanguageMenu(){
         System.out.println("Seleccione su idioma / Choose your language:");
         System.out.println("1. Español");
         System.out.println("2. English");
     }
 
+    /**
+     * Muestra el menú de operaciones disponibles en la calculadora.
+     *
+     * @param textos El objeto Textos que contiene las cadenas de texto para el menú.
+     */
     public static void showMenu(Textos textos) {
         System.out.println("------------------" + Textos.CALCULADORA + "------------------");
         System.out.println(Textos.ELECCION);
@@ -30,6 +38,13 @@ public class CLI {
         System.out.println("-----------------------------------------------");
     }
 
+    /**
+     * Imprime el resultado de la operación en la salida estándar.
+     *
+     * @param operacion La operación realizada.
+     * @param valorx El primer valor utilizado en la operación.
+     * @param valory El segundo valor utilizado en la operación.
+     */
     public static void printResult(Operacion operacion, double valorx, double valory){
         System.out.println(Textos.RESULTADO + operacion.getClass().getSimpleName()
                 + Textos.ES + operacion.calcular(valorx,valory));
@@ -38,6 +53,10 @@ public class CLI {
     public static double valorx = 0;
     public static double valory = 0;
 
+
+    /**
+     * Método principal que lanza la aplicación de la calculadora en línea de comandos.
+     */
     public static void launchApp() {
         Scanner scanner = new Scanner(System.in);
         boolean salir = false;
