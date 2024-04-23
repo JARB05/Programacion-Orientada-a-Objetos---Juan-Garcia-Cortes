@@ -3,54 +3,59 @@ package edu.juan.garcia.reto9.process;
 import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-/**
- * Clase que proporciona métodos para analizar un libro y contar las palabras más usadas.
- */
 public class BookAnalyzer {
 
-    /**
-     * Cuenta las palabras más usadas en un libro.
-     * @param fileName Nombre del archivo del libro.
-     * @return Una lista de pares (palabra, frecuencia) ordenada por frecuencia descendente.
-     * @throws IllegalArgumentException Si el archivo no se encuentra.
-     */
-    public static List<Map.Entry<String, Integer>> countWords(String fileName) {
-        Map<String, Integer> wordCount = new HashMap<>();
-
-        try {
-            InputStream inputStream = BookAnalyzer.class.getClassLoader().getResourceAsStream
-                    ("edu/juan/garcia/reto9/resources/" + fileName);
-            if (inputStream != null) {
-                Scanner fileScanner = new Scanner(inputStream);
-                while (fileScanner.hasNext()) {
-                    String word = fileScanner.next().toLowerCase();
-                    word = Normalizer.normalize(word, Normalizer.Form.NFD).replaceAll
-                            ("[^\\p{ASCII}]", ""); // Eliminar acentos
-                    word = word.replaceAll("[^a-zA-Z]", ""); // Eliminar caracteres no alfabéticos
-                    if (!word.isEmpty()) {
-                        wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
-                    }
-                }
-                fileScanner.close();
-            } else {
+    public static List<String> getWordsFromFile(String fileName) {
+        List<String> words = new ArrayList<>();
+        try (InputStream inputStream = BookAnalyzer.class.getClassLoader().getResourceAsStream("edu/juan/garcia/reto9/resources/" + fileName)) {
+            if (inputStream == null) {
                 throw new IllegalArgumentException("Archivo no encontrado");
+            }
+            Scanner scanner = new Scanner(inputStream);
+            while (scanner.hasNext()) {
+                String word = Normalizer.normalize(scanner.next().toLowerCase(), Normalizer.Form.NFD)
+                        .replaceAll("[^\\p{ASCII}]", "")
+                        .replaceAll("[^a-zA-Z]", "");
+                if (!word.isEmpty()) {
+                    words.add(word);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return sortWords(wordCount);
+        return words;
     }
 
-    /**
-     * Ordena las palabras según su frecuencia de uso.
-     * @param wordCount Mapa de palabras y sus frecuencias.
-     * @return Una lista de pares (palabra, frecuencia) ordenada por frecuencia descendente.
-     */
-    private static List<Map.Entry<String, Integer>> sortWords(Map<String, Integer> wordCount) {
-        List<Map.Entry<String, Integer>> wordList = new ArrayList<>(wordCount.entrySet());
-        wordList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        return wordList;
+    public static long countVowels(List<String> words) {
+        return words.stream().flatMapToInt(String::chars).filter(c -> "aeiou".indexOf(c) >= 0).count();
+    }
+
+    public static Map<String, Long> wordsStartingWithVowelCountSorted(List<String> words) {
+        return words.stream()
+                .filter(word -> word.matches("^[aeiou].*"))
+                .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.counting()));
+    }
+
+    public static Map<String, Long> wordsWithOddLengthCount(List<String> words) {
+        return words.stream()
+                .filter(word -> word.length() % 2 != 0)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    public static Optional<String> findLongestWord(List<String> words) {
+        return words.stream().max(Comparator.comparingInt(String::length));
+    }
+
+    public static Optional<String> findShortestWord(List<String> words) {
+        return words.stream().min(Comparator.comparingInt(String::length));
+    }
+
+    public static Optional<String> findWordWithSpecificCondition(List<String> words) {
+        return words.stream()
+                .filter(word -> word.matches("^[aeiou].*[aeiou]$") && word.length() >= 5)
+                .findFirst();
     }
 }
