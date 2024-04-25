@@ -1,40 +1,29 @@
 package edu.juan.garcia.reto9.ui;
 
 import edu.juan.garcia.reto9.process.BookAnalyzer;
-
 import java.util.*;
 
-/**
- * Clase que representa la interfaz de línea de comandos (CLI) para interactuar con el programa de análisis de libros.
- */
 public class CLI {
 
-    /** Objeto Scanner para la entrada del usuario */
     private static final Scanner scanner = new Scanner(System.in);
 
-    /**
-     * Muestra el menú de selección de idiomas.
-     */
     public static void mostrarMenuIdiomas() {
-        System.out.println("------------------Idioma------------------");
-        System.out.println("Escoja un idioma:");
-        System.out.println("1- Español");
-        System.out.println("2- English");
-        System.out.println("-------------------------------------------");
+        System.out.println("╔═══════════════════════════════════════╗");
+        System.out.println("║           Bienvenido al CLI           ║");
+        System.out.println("╠═══════════════════════════════════════╣");
+        System.out.println("║           Seleccione su idioma        ║");
+        System.out.println("║           1- Español                  ║");
+        System.out.println("║           2- English                  ║");
+        System.out.println("╚═══════════════════════════════════════╝");
     }
 
-    /**
-     * Obtiene el idioma seleccionado por el usuario.
-     * @return El código de idioma seleccionado (ES para español, ENG para inglés).
-     * @throws IllegalArgumentException Si el idioma seleccionado no es válido.
-     */
     private static String obtenerIdiomaSeleccionado() {
         int idioma;
         try {
             idioma = Integer.parseInt(scanner.nextLine());
             switch (idioma) {
                 case 1:
-                    return "ES";
+                    return "ESP";
                 case 2:
                     return "ENG";
                 default:
@@ -45,12 +34,15 @@ public class CLI {
         }
     }
 
-    /**
-     * Obtiene el nombre del archivo de libro seleccionado por el usuario.
-     * @return El nombre del archivo del libro seleccionado.
-     * @throws IllegalArgumentException Si la opción seleccionada no es válida.
-     */
     private static String obtenerNombreArchivo() {
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║           Seleccione su libro          ║");
+        System.out.println("║           1- Blanca Nieves             ║");
+        System.out.println("║           2- El Gato con Botas         ║");
+        System.out.println("║           3- Los Tres Cerditos         ║");
+        System.out.println("║           4- Pinocho                   ║");
+        System.out.println("║           5- Ricitos de Oro            ║");
+        System.out.println("╚════════════════════════════════════════╝");
         int libro;
         try {
             libro = Integer.parseInt(scanner.nextLine());
@@ -73,27 +65,49 @@ public class CLI {
         }
     }
 
-    /**
-     * Método principal para iniciar la aplicación.
-     */
     public static void launchApp() {
-
         mostrarMenuIdiomas();
         String idioma = obtenerIdiomaSeleccionado();
-        Idiomas idiomas = Idiomas.getInstance(idioma);
+
+        // Aquí se captura el retorno de getInstance
+        Idiomas.getInstance(idioma);
 
         System.out.println();
+        System.out.println(Idiomas.MENU);
 
-        System.out.println(idiomas.getMENU());
         String nombreArchivo = obtenerNombreArchivo();
-        List<Map.Entry<String, Integer>> listaPalabras = BookAnalyzer.countWords(nombreArchivo);
+        List<String> words = BookAnalyzer.getWordsFromFile(nombreArchivo);
 
-        System.out.println();
+        System.out.println(Idiomas.VOCALES_TOTALES + BookAnalyzer.countVowels(words));
 
-        System.out.println(idiomas.getPALABRAS_MAS_USADAS() + nombreArchivo + " " + idiomas.getSON());
-        for (int i = 0; i < 10 && i < listaPalabras.size(); i++) {
-            System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": "
-                    + listaPalabras.get(i).getValue());
+        Map<String, Long> wordsStartingWithVowelCountSorted = BookAnalyzer.wordsStartingWithVowelCountSorted(words);
+        System.out.println(Idiomas.PALABRAS_INICIAN_VOCAL + ":");
+        wordsStartingWithVowelCountSorted.forEach((word, count) -> System.out.println(word + ": " + count));
+
+        Map<String, Long> oddLengthWordsCount = BookAnalyzer.wordsWithOddLengthCount(words);
+        System.out.println(Idiomas.PALABRAS_NUMERO_IMPAR_LETRAS + ":");
+        oddLengthWordsCount.forEach((word, count) -> System.out.println(word + ": " + count));
+
+        Optional<String> longestWord = BookAnalyzer.findLongestWord(words);
+        longestWord.ifPresent(word -> System.out.println(Idiomas.PALABRA_MAS_LARGA + word));
+
+        Optional<String> shortestWord = BookAnalyzer.findShortestWord(words);
+        shortestWord.ifPresent(word -> System.out.println(Idiomas.PALABRA_MAS_CORTA + word));
+
+        Optional<String> wordWithSpecificCondition = BookAnalyzer.findWordWithSpecificCondition(words);
+        wordWithSpecificCondition.ifPresentOrElse(
+                word -> System.out.println(Idiomas.PALABRA_ESPECIAL + word),
+                () -> System.out.println(Idiomas.NO_HAY_PALABRAS)
+        );
+
+        Map<String, Long> wordCounts = new HashMap<>();
+        for (String word : words) {
+            wordCounts.put(word, wordCounts.getOrDefault(word, 0L) + 1);
         }
+        System.out.println(Idiomas.PALABRAS_MAS_USADAS);
+        wordCounts.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+                .limit(10)
+                .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
 }
