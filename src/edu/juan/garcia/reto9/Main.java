@@ -3,6 +3,7 @@ package edu.juan.garcia.reto9;
 import edu.juan.garcia.reto9.ui.CLI;
 
 public class Main {
+
     /**
      * Método principal que inicia la aplicación.
      * @param args Los argumentos de la línea de comandos (no se utilizan en este caso).

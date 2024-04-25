@@ -25,6 +25,12 @@ public class Idiomas {
     public static String SON;
     public static String ES;
 
+    /**
+     * Obtiene una instancia de la clase `Idiomas` basada en el idioma proporcionado.
+     *
+     * @param idioma El idioma seleccionado, puede ser "ESP" para español o "ENG" para inglés.
+     * @throws IllegalArgumentException Si el idioma proporcionado no es válido.
+     */
     public static void getInstance(String idioma) {
         Textos opcion = Textos.valueOf(idioma);
         switch (opcion) {
@@ -77,6 +83,9 @@ public class Idiomas {
         }
     }
 
+    /**
+     * Enumeración que representa los diferentes textos disponibles en idiomas.
+     */
     enum Textos {
         ESP, ENG
     }

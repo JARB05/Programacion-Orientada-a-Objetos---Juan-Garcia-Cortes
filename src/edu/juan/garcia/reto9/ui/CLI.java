@@ -3,10 +3,16 @@ package edu.juan.garcia.reto9.ui;
 import edu.juan.garcia.reto9.process.BookAnalyzer;
 import java.util.*;
 
+/**
+ * Clase que proporciona la interfaz de línea de comandos (CLI) para la aplicación.
+ */
 public class CLI {
 
     private static final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Muestra el menú para seleccionar el idioma.
+     */
     public static void mostrarMenuIdiomas() {
         System.out.println("╔═══════════════════════════════════════╗");
         System.out.println("║           Bienvenido al CLI           ║");
@@ -17,6 +23,12 @@ public class CLI {
         System.out.println("╚═══════════════════════════════════════╝");
     }
 
+    /**
+     * Obtiene el idioma seleccionado por el usuario.
+     *
+     * @return El código del idioma seleccionado.
+     * @throws IllegalArgumentException Si se ingresa una opción inválida.
+     */
     private static String obtenerIdiomaSeleccionado() {
         int idioma;
         try {
@@ -34,6 +46,12 @@ public class CLI {
         }
     }
 
+    /**
+     * Obtiene el nombre del archivo del libro seleccionado por el usuario.
+     *
+     * @return El nombre del archivo del libro seleccionado.
+     * @throws IllegalArgumentException Si se ingresa una opción inválida.
+     */
     private static String obtenerNombreArchivo() {
         System.out.println("╔════════════════════════════════════════╗");
         System.out.println("║           Seleccione su libro          ║");
@@ -65,11 +83,18 @@ public class CLI {
         }
     }
 
+    /**
+     * Inicia la aplicación CLI, proporcionando una interfaz de usuario para interactuar con el análisis de libros.
+     * Este método guía al usuario a través de la selección de idioma y la elección del libro a analizar.
+     * Luego, muestra varias estadísticas sobre el libro seleccionado, como el número total de vocales,
+     * las palabras que comienzan con vocal, las palabras con longitud impar, la palabra más larga,
+     * la palabra más corta y una palabra que cumple con una condición específica.
+     * Finalmente, muestra las 10 palabras más utilizadas en el libro.
+     */
     public static void launchApp() {
         mostrarMenuIdiomas();
         String idioma = obtenerIdiomaSeleccionado();
 
-        // Aquí se captura el retorno de getInstance
         Idiomas.getInstance(idioma);
 
         System.out.println();
