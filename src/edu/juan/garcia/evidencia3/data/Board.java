@@ -135,7 +135,7 @@ public class Board {
             }
         }
 
-        // Verificar diagonal principal
+        // Verificar diagonal principal.
         if (board[0][0] != ' ' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
             return board[0][0];
         }
