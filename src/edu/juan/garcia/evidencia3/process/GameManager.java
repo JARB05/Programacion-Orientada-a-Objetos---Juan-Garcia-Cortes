@@ -2,6 +2,7 @@ package edu.juan.garcia.evidencia3.process;
 
 import edu.juan.garcia.evidencia3.data.Board;
 import edu.juan.garcia.evidencia3.data.Player;
+import edu.juan.garcia.evidencia3.ui.Languages;
 
 import java.util.Scanner;
 
@@ -33,10 +34,10 @@ public class GameManager {
                 // Si el jugador actual es humano, solicita su movimiento
                 boolean validMove = false;
                 while (!validMove) {
-                    System.out.println("Turno de " + currentPlayer.getName() + " (" + currentPlayer.getSymbol() + ")");
-                    System.out.print("Ingrese fila (0-2): ");
+                    System.out.println(Languages.TURNO_DE + currentPlayer.getName() + " (" + currentPlayer.getSymbol() + ")");
+                    System.out.print(Languages.INGRESAR_FILA);
                     int row = scanner.nextInt();
-                    System.out.print("Ingrese columna (0-2): ");
+                    System.out.print(Languages.INGRESAR_COLUMNA);
                     int col = scanner.nextInt();
                     scanner.nextLine(); // Consumir el salto de línea
 
@@ -52,13 +53,13 @@ public class GameManager {
             // Verificar si el juego ha terminado
             if (board.hasWinner()) {
                 board.displayBoard();
-                System.out.println("¡" + currentPlayer.getName() + " gana!");
+                System.out.println("¡" + currentPlayer.getName() + Languages.GANADOR);
                 currentPlayer.incrementWins();
                 leaderboard.addOrUpdatePlayer(currentPlayer); // Actualiza la tabla de líderes
                 gameEnded = true;
             } else if (board.isBoardFull()) {
                 board.displayBoard();
-                System.out.println("¡Es un empate!");
+                System.out.println(Languages.EMPATE);
                 gameEnded = true;
             } else {
                 switchPlayer();

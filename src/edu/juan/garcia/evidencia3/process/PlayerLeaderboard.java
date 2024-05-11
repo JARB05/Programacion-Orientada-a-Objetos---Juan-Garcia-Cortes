@@ -1,6 +1,7 @@
 package edu.juan.garcia.evidencia3.process;
 
 import edu.juan.garcia.evidencia3.data.Player;
+import edu.juan.garcia.evidencia3.ui.Languages;
 
 import java.io.*;
 import java.util.*;
@@ -52,9 +53,9 @@ public class PlayerLeaderboard {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.err.println("No se encontró el archivo de la tabla de líderes. Se creará uno nuevo.");
+            System.err.println(Languages.ERROR_ARCHIVO_LIDERES);
         } catch (IOException e) {
-            System.err.println("Error al cargar la tabla de líderes: " + e.getMessage());
+            System.err.println(Languages.ERROR_CARGAR_LIDERES + e.getMessage());
         }
     }
 
@@ -67,7 +68,7 @@ public class PlayerLeaderboard {
                 writer.println(player.getName() + "," + player.getSymbol() + "," + player.getWins());
             }
         } catch (IOException e) {
-            System.err.println("Error al guardar la tabla de líderes: " + e.getMessage());
+            System.err.println(Languages.ERROR_GUARDAR_LIDERES + e.getMessage());
         }
     }
 

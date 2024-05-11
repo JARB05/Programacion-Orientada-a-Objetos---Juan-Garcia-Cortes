@@ -63,11 +63,11 @@ public class CLI {
     }
 
     private static char promptForPlayerSymbol(String playerName) {
-        System.out.println("\nSímbolos disponibles:");
+        System.out.println(Languages.SIMBOLOS);
         for (int i = 0; i < availableSymbols.size(); i++) {
             System.out.println((i + 1) + ". " + availableSymbols.get(i));
         }
-        System.out.print("Seleccione el símbolo para " + playerName + ": ");
+        System.out.print(Languages.JUGAR + playerName + " : ");
         int choice = scanner.nextInt() - 1;
         scanner.nextLine(); // Limpia el buffer del scanner
         char symbol = availableSymbols.get(choice);
@@ -76,41 +76,39 @@ public class CLI {
     }
 
     private static boolean promptForGameMode() {
-        System.out.println("\nElige el modo de juego:");
-        System.out.println("1. Jugador vs Jugador");
-        System.out.println("2. Jugador vs CPU");
+        System.out.println(Languages.INICIO_JUEGO);
         int choice = scanner.nextInt();
         scanner.nextLine(); // Limpia el buffer del scanner
         return choice == 2;
     }
 
     private static boolean promptForNewGame() {
-        System.out.println("\n¿Jugar otra vez? (s/n): ");
+        System.out.println(Languages.JUGAR_DE_NUEVO);
         String response = scanner.nextLine().trim().toLowerCase();
-        return "s".equals(response);
+        return Languages.AFIRMATIVO.equalsIgnoreCase(response);
     }
 
     private static void showLeaderboard() {
-        System.out.println("\nTabla de Líderes:");
+        System.out.println(Languages.TABLA_LIDERES);
         List<Player> leaders = leaderboard.getLeaderboard();
         if (leaders.isEmpty()) {
-            System.out.println("La tabla de líderes está vacía.\n");
+            System.out.println(Languages.TABLA_VACIA);
             return;
         }
-        leaders.forEach(player -> System.out.println(player.getName() + " - Símbolo: " + player.getSymbol() + " - Victorias: " + player.getWins()));
+        leaders.forEach(player -> System.out.println(player.getName() + Languages.SIMBOLO + player.getSymbol() + Languages.VICTORIAS + player.getWins()));
     }
 
     public static void playGame() {
         printWelcome();
         boolean isCpuMode = promptForGameMode();
 
-        Player player1 = new Player(promptForPlayerName(1), promptForPlayerSymbol("Jugador 1"));
+        Player player1 = new Player(promptForPlayerName(1), promptForPlayerSymbol(Languages.JUGADOR_1));
         Player player2;
 
         if (isCpuMode) {
             player2 = new CPU("CPU", promptForPlayerSymbol("CPU"));
         } else {
-            player2 = new Player(promptForPlayerName(2), promptForPlayerSymbol("Jugador 2"));
+            player2 = new Player(promptForPlayerName(2), promptForPlayerSymbol(Languages.JUGADOR_2));
         }
 
         GameManager gameManager = new GameManager(player1, player2, leaderboard);
@@ -128,6 +126,6 @@ public class CLI {
             playGame();
         } while (promptForNewGame());
 
-        System.out.println("\nGracias por jugar. ¡Hasta la próxima!\n");
+        System.out.println(Languages.DESPEDIDA);
     }
 }
