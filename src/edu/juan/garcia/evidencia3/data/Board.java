@@ -65,7 +65,7 @@ public class Board {
      * @throws IllegalArgumentException Si la celda no está vacía.
      */
     public void makeMove(int row, int col, char symbol) {
-        // Permitir "deshacer" un movimiento si el símbolo es ' '
+        // Permitir "deshacer" un movimiento si el símbolo es ' ' (esto es para el minimax)
         if (symbol == ' ' || isCellEmpty(row, col)) {
             board[row][col] = symbol;
         } else {

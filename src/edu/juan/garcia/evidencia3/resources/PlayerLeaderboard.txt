@@ -1,5 +1,5 @@
-Juan,A,2
+CPU,♥,4
+Juan,A,3
 2,♥,1
+1,♠,1
 Pepe,B,0
-L,X,0
-Leo,X,0

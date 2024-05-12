@@ -1,5 +1,9 @@
 package edu.juan.garcia.evidencia3.ui;
 
+/**
+ * Clase que gestiona los textos utilizados en la interfaz de usuario del juego,
+ * permitiendo la internacionalización y selección de idiomas.
+ */
 public class Languages {
     public static String BIENVENIDA;
     public static String NOMBRES;
@@ -27,6 +31,14 @@ public class Languages {
     public static String JUGADOR_2;
     public static String LENGUAGE_INVALIDO;
 
+    /**
+     * Configura el idioma de la interfaz de usuario basándose en la selección del usuario.
+     * Actualiza todas las variables estáticas con los textos correspondientes al idioma seleccionado.
+     *
+     * @param language El código del idioma a establecer. Los valores válidos son "ESP" para español,
+     *                 "ENG" para inglés, y "RU" para ruso.
+     * @throws IllegalArgumentException Si se proporciona un código de idioma no válido.
+     */
     public static void getInstance(String language) {
         Textos opcion = Textos.valueOf(language.toUpperCase());
         switch (opcion) {
@@ -120,6 +132,9 @@ public class Languages {
         }
     }
 
+    /**
+     * Enumeración interna utilizada para manejar de forma segura los códigos de idioma.
+     */
     private enum Textos {
         ESP, ENG, RU
     }
